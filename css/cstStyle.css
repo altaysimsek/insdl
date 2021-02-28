@@ -1,0 +1,13 @@
+.downButton {
+    border-radius: 8px;
+    box-sizing: border-box;
+    height: 24px;
+    font-weight: 700;
+    padding: 0.25rem 0.75rem;
+    margin: 0.5rem;
+    background-color: #f6b854;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

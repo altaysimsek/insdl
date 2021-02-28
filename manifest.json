@@ -1,0 +1,13 @@
+{
+    "name": "Insdl",
+    "version": "1.0",
+    "description": "Insdl allow to download video from instagram",
+    "manifest_version": 2,
+    "content_scripts": [
+        {
+            "matches": ["https://*.instagram.com/*"],
+            "js": ["./depencies/scripts/jquery-3.5.1.min.js", "./scripts/contentScript.js"],
+            "css": ["./css/cstStyle.css"]
+        }
+    ]
+}
