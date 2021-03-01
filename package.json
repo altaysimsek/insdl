@@ -1,0 +1,25 @@
+{
+  "name": "instagram-videodownloader",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "standard",
+    "lint:fix": "standard --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/altaysimsek/insdl.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/altaysimsek/insdl/issues"
+  },
+  "homepage": "https://github.com/altaysimsek/insdl#readme",
+  "devDependencies": {
+    "standard": "^16.0.3"
+  }
+}
