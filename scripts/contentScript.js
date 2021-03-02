@@ -24,7 +24,6 @@ $(function () {
         $('._5e4p').after(
           `<a class="downButton" href="${dataToJson.graphql.shortcode_media.video_url}&dl=1" target="_blank" download="Insdl">Insdl</a>`
         )
-        console.log(dataToJson.graphql.shortcode_media.video_url)
       } else {
         console.log('Video bulunamadı')
       }
