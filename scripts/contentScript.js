@@ -20,6 +20,18 @@ $(function () {
       // Kaydırmalılar için Case1- dataToJson.graphql.shortcode_media.edge_sidecar_to_children.edges[0].node.video_url
       // Tek video için Case2- dataToJson.graphql.shortcode_media.video_url
       // Kaydırmalılarda hata veriyor.
+
+      if (
+        dataToJson.graphql.shortcode_media.edge_sidecar_to_children.edges.length > 0 &&
+        dataToJson.graphql.shortcode_media.edge_sidecar_to_children.edges != undefined
+      ) {
+        console.log(
+          dataToJson.graphql.shortcode_media.edge_sidecar_to_children.edges.map((post) =>
+            console.log(post.node.video_url)
+          )
+        )
+      }
+
       if (dataToJson.graphql.shortcode_media.video_url) {
         $('._5e4p').after(
           `<a class="downButton" href="${dataToJson.graphql.shortcode_media.video_url}&dl=1" target="_blank" download="Insdl">Insdl</a>`
