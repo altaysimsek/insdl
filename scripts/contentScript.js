@@ -11,33 +11,25 @@ $(function () {
           additionalData = scripts[i].innerHTML
         }
       }
-      // Worked Case : https://www.instagram.com/p/CL1Rv-Ylrkc/
-      // console.log(additionalData);
 
       const dataToJson = JSON.parse(
         additionalData.slice(31 + window.location.pathname.length + 2, additionalData.length - 2)
       )
-      // Kaydırmalılar için Case1- dataToJson.graphql.shortcode_media.edge_sidecar_to_children.edges[0].node.video_url
-      // Tek video için Case2- dataToJson.graphql.shortcode_media.video_url
-      // Kaydırmalılarda hata veriyor.
 
-      if (
-        dataToJson.graphql.shortcode_media.edge_sidecar_to_children.edges.length > 0 &&
-        dataToJson.graphql.shortcode_media.edge_sidecar_to_children.edges != undefined
-      ) {
+      if (dataToJson.graphql.shortcode_media.hasOwnProperty('edge_sidecar_to_children')) {
+        console.log("It's a slide post")
         console.log(
-          dataToJson.graphql.shortcode_media.edge_sidecar_to_children.edges.map((post) =>
-            console.log(post.node.video_url)
+          dataToJson.graphql.shortcode_media.edge_sidecar_to_children.edges.map(
+            (post) => post.node.video_url
           )
         )
-      }
-
-      if (dataToJson.graphql.shortcode_media.video_url) {
+      } else if (dataToJson.graphql.shortcode_media.video_url) {
+        console.log('Video founded.')
         $('._5e4p').after(
           `<a class="downButton" href="${dataToJson.graphql.shortcode_media.video_url}&dl=1" target="_blank" download="Insdl">Insdl</a>`
         )
       } else {
-        console.log('Video bulunamadı')
+        console.log('Video is not found')
       }
     }, 1000)
   }
