@@ -1,7 +1,17 @@
 $(function () {
   console.log('%c[V1.0 - Insdl] Insdl is ready!', 'color: aqua; font-weight: 700')
 
-  const getVideoUrl = () => {
+  const createSlideLinks = (edges) => {
+    let listString = ''
+    edges.forEach((edge, index) => {
+      listString += `<li><a class="dropdown-item" href="${
+        edge.node.video_url
+      }&dl=1" target="_blank" download="Insdl">DL${index + 1}</a></li>`
+    })
+    return listString
+  }
+
+  const getVideoUrls = () => {
     setTimeout(() => {
       const scripts = $('script')
       let additionalData = null
@@ -15,13 +25,20 @@ $(function () {
       const dataToJson = JSON.parse(
         additionalData.slice(31 + window.location.pathname.length + 2, additionalData.length - 2)
       )
-
+      //Realizing the post is slide or single.
       if (dataToJson.graphql.shortcode_media.hasOwnProperty('edge_sidecar_to_children')) {
-        console.log("It's a slide post")
-        console.log(
-          dataToJson.graphql.shortcode_media.edge_sidecar_to_children.edges.map(
-            (post) => post.node.video_url
-          )
+        $('._5e4p').after(
+          `<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    DL List
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    
+    ${createSlideLinks(dataToJson.graphql.shortcode_media.edge_sidecar_to_children.edges)}
+    <li><a class="dropdown-item" href="#">DL P3</a></li>
+    <li><a class="dropdown-item" href="#">DL Last</a></li>
+  </ul>
+</div>`
         )
       } else if (dataToJson.graphql.shortcode_media.video_url) {
         console.log('Video founded.')
@@ -33,10 +50,11 @@ $(function () {
       }
     }, 1000)
   }
-  getVideoUrl()
+  getVideoUrls()
 
   let windowLoc = window.location.href
 
+  //Observer watches the dom and gives reaction if the page changed
   const observer = new MutationObserver(function (mutations) {
     mutations.forEach(function (mutation) {
       if (window.location.href !== windowLoc) {
@@ -44,7 +62,7 @@ $(function () {
         windowLoc = window.location.href
         if (window.location.href.startsWith('https://www.instagram.com/p/')) {
           location.reload()
-          getVideoUrl()
+          getVideoUrls()
         }
       }
     })
