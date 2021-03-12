@@ -2,6 +2,7 @@ $(function () {
   console.log('%c[V1.0 - Insdl] Insdl is ready!', 'color: aqua; font-weight: 700')
 
   const createSlideLinks = (edges) => {
+    //Creating a html string with edges links
     let listString = ''
     edges.forEach((edge, index) => {
       listString += `<li><a class="dropdown-item" href="${
