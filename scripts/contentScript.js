@@ -38,8 +38,7 @@ $(function () {
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
     
     ${createSlideLinks(dataToJson.graphql.shortcode_media.edge_sidecar_to_children.edges)}
-    <li><a class="dropdown-item" href="#">DL P3</a></li>
-    <li><a class="dropdown-item" href="#">DL Last</a></li>
+    
   </ul>
 </div>`
         )
