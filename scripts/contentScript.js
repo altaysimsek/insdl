@@ -7,7 +7,9 @@ $(function () {
     edges.forEach((edge, index) => {
       listString += `<li><a class="dropdown-item" href="${
         edge.node.video_url
-      }&dl=1" target="_blank" download="Insdl">DL${index + 1}</a></li>`
+      }&dl=1" target="_blank" download="Insdl" href="${edge.node.video_url}">DL${
+        index + 1
+      }</a></li>`
     })
     return listString
   }
